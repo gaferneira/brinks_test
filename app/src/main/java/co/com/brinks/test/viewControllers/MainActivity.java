@@ -1,16 +1,17 @@
-package co.com.brinks.test;
+package co.com.brinks.test.viewControllers;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
-import android.os.Handler;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
+import co.com.brinks.test.R;
+import co.com.brinks.test.base.ParentActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends ParentActivity {
 
     private static final long SPLASH_TIME_OUT = 3000;
 
@@ -24,20 +25,24 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
 
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 //Show list
-                splashView.animate().alpha(1f).setDuration(1000).setListener(new AnimatorListenerAdapter() {
+                splashView.animate().alpha(0f).setDuration(1000).setListener(new AnimatorListenerAdapter() {
                     @Override
                     public void onAnimationEnd(Animator animation) {
                         super.onAnimationEnd(animation);
                         mainContentView.setVisibility(View.VISIBLE);
+                        splashView.setVisibility(View.GONE);
                     }
                 });
             }
         }, SPLASH_TIME_OUT);
+
+
 
     }
 

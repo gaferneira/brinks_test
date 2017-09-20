@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="Ordenar alfabéticamente" android:id="@+id/alfabetic_order"/>
+    <item android:title="Ordenar por Fecha" android:id="@+id/date_order"/>
+</menu>
